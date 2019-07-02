@@ -1,7 +1,38 @@
-# You Don't Need JavaScript
+# jx-css
 
-Please note these demos should be considered as CSS "Proofs of Concepts". They may have serious issues from accessibility point of view (keyboard navigation, speech synthesis, etc.), or progressive enhancement/degradation/etc.
+http://lesscss.org/usage/
 
+```
+dir: axis direction
+    top：from top to bottom
+    right：from right to left
+    bottom：from bottom to top
+    left：from left to right( default )
+```
+
+```
+main：axis align
+    right：from right to left
+    left：from left to right ( default )
+    justify：justify align
+    center：center align
+```
+```
+cross：cross axis align
+    top：from top to bottom ( default )
+    bottom：from top to bottom
+    baseline：baseline align
+    center：center align
+    stretch：cover whole area 
+```
+```
+box：child element setup 
+    mean：space is split by child elements equally
+    first：spare space is  not given to the first element and split by the rest of child elements equally
+    last：spare space is  not given to the last element and split by the rest of child elements equally
+    justify：spare space is  not given to both of the first element of each end 
+	and split by the rest of child elements equally
+```
 
 ### Style Guide:
 

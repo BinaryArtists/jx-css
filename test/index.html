@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="../dist/index.css" rel="stylesheet" type="text/css" />
+  <style>
+  [flex] {
+    display: flex;
+  }
+  [flex] > * {
+    display: block;
+  }
+  [flex] > [flex] {
+    display: flex;
+  }
+  </style>
+</head>
+<body>
+  <!-- <script>var exports = {};</script>  -->
+  <!-- flex attribute matching，a simple example of centering child element ： -->
+  <div flex="main:center cross:center" style="width:500px; height: 500px; background: #108423">
+    <div style="background: #fff"> to see if this is in the center </div>
+  </div>
+
+<!-- data-flex attribute matching，a simple example of centering child element： -->
+  <div data-flex="main:center cross:center" style="width:500px; height: 500px; background: #f1d722">
+    <div style="background: #fff"> to see if this is in the center </div>
+  </div>
+</body>
+</html>
