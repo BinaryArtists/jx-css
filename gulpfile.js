@@ -3,6 +3,7 @@ var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
 var cssmin = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var concat = require('gulp-concat'); 
 
 /**
  * 定义less编译任务
@@ -23,8 +24,9 @@ gulp.task('build', function () {
                 'bb >= 10'
             ]
         }))
-        .pipe(cssmin()) //压缩css
-        // .pipe(rename({suffix:'.acss'}))
+        .pipe(concat('index.acss')) //- 合并后的文件名
+        .pipe(cssmin()) //- 压缩处理成一行
+        .pipe(rename({suffix:'.min'}))
         .pipe(gulp.dest('dist')); //编译后输出目录
 });
 
