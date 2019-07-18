@@ -1,4 +1,4 @@
-.flexable {
+.flex {
   display: flex;
   &>* {
     display: block;
@@ -6,22 +6,144 @@
 }
 
 /* 主轴方向：从左到右(默认) */
-.dir_left {
-  .flexable();
-
+.dir:left {
+  .flex();
   flex-direction: row;
 }
 
-/* 主轴对齐方式：居中对齐 */
-.main_center {
-  .flexable();
+/* 主轴方向：从右到左 */
+.dir:right {
+  .flex();
+  flex-direction: row-reverse;
+  -webkit-box-pack: end; //修复旧版本主轴和标准主轴flex表现不一致的bug
+}
 
+/* 主轴方向：从上到下 */
+.dir:top {
+  .flex();
+  flex-direction: column;
+}
+
+/* 主轴方向：从下到上 */
+.dir:bottom {
+  .flex();
+  flex-direction: column-reverse;
+  -webkit-box-pack: end; //修复旧版本主轴和标准主轴flex表现不一致的bug
+}
+
+/* 主轴对齐方式：从左到右(默认) */
+.main:left {
+  .flex();
+  justify-content: flex-start;
+}
+
+/* 主轴对齐方式：从右到左 */
+.main:right {
+  .flex();
+  justify-content: flex-end;
+}
+
+/* 主轴对齐方式：两端对齐 */
+.main:justify {
+  .flex();
+  justify-content: space-between;
+}
+
+/* 主轴对齐方式：居中对齐 */
+.main:center {
+  .flex();
   justify-content: center;
 }
 
+/* 交叉轴齐方式：从上到下(默认) */
+.cross:top {
+  .flex();
+  align-items: flex-start;
+}
+
+/* 交叉轴齐方式：从下到上 */
+.cross:bottom {
+  .flex();
+  align-items: flex-end;
+}
+
 /* 交叉轴齐方式：居中对齐 */
-.cross_center {
-  .flexable();
-  
+.cross:center {
+  .flex();
   align-items: center;
 }
+
+/* 交叉轴齐方式：跟随内容高度对齐 */
+.cross:baseline {
+  .flex();
+  align-items: baseline;
+}
+
+/* 交叉轴齐方式：高度并排铺满 */
+.cross:stretch {
+  .flex();
+  align-items: stretch;
+}
+
+/* 子元素平分宽度 */
+.box:mean>*, // 所有元素
+.box:first>*, // 第一个子元素
+.box:last>*, // 最后一个子元素
+.box:justify>* // 两端第一个子元素
+{
+  .flex();
+  width: 0%;
+  height: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.box:first>*:first-child, //第一个子元素
+.box:last>*:last-child, //最后一个子元素
+.box:justify>*:first-child, //两端第一个子元素
+.box:justify>*:last-child //两端最后一个子元素
+{
+  .flex();
+  width: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* 子元素平分高度 */
+.dir:top .box:mean>*,
+.dir:top .box:first>*, //第一个子元素
+.dir:top .box:last>*, //最后一个子元素
+.dir:top .box:justify>*, //两端最后一个子元素
+.dir:bottom .box:mean>*,
+.dir:bottom .box:first>*, //第一个子元素
+.dir:bottom .box:last>*, //最后一个子元素
+.dir:bottom .box:justify>* //两端最后一个子元素
+{
+    width: auto;
+    height: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.dir:top .box:first>*:first-child, //第一个子元素
+.dir:top .box:last>*:last-child, //最后一个子元素
+.dir:top .box:justify>*:first-child, //两端第一一个子元素
+.dir:top .box:justify>*:last-child, //两端最后一个子元素
+.dir:bottom .box:first>*:first-child, //第一个子元素
+.dir:bottom .box:last>*:last-child, //最后一个子元素
+.dir:bottom .box:justify>*:first-child //两端第一一个子元素
+.dir:bottom .box:justify>*:last-child //两端最后一个子元素
+{
+    height: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+// 子元素伸缩比例循环
+// .flex-box(10);
+// .flex-box(@n, @i: 0) when (@i =< @n) {
+//     [@{flex-box}="@{i}"] {
+//         flex-grow: @i;
+//         flex-shrink: @i;
+//     }
+//     .flex-box(@n, (@i + 1));
+// }
