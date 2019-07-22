@@ -1,0 +1,26 @@
+/// 横向等距 - 变长 - flex
+
+.space-evenly-flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/// 横向等距 - 变长 - calc
+@space_evenly_section_height: 1.52rem;
+.space-evenly-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+@space_evenly_item_width: 3.28rem;
+@space_evenly_item_height: 1.20rem;
+.space-evenly-item {
+  width: @space_evenly_item_width;
+  height: @space_evenly_item_height;
+  margin-left: calc((100% - @space_evenly_item_width*2)/3);
+}
+
+/// 横向等距 - 定长 - grid
+
+
+/// ？？？
